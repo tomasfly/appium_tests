@@ -1,0 +1,3 @@
+{
+    "loginButton":"new UiSelector().resourceIdMatches(\".*:id/sign_in_button\")"
+}
