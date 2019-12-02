@@ -1,9 +1,9 @@
 exports.config = {
     specs: [
-        './src/features/*.feature',
+        './src/features/amazon.feature',
     ],
     port: 4723,
-    services: ['appium'],
+    services: ['appium','shared-store'],
     appium: {
         command: 'appium',
         logPath: 'appium.log'
@@ -17,7 +17,7 @@ exports.config = {
             appPackage: "com.amazon.mShop.android.shopping",
             appActivity: "com.amazon.mShop.home.HomeActivity",
             automationName: "UiAutomator2",
-            noReset: "false",
+            noReset: "true",
             skipUnlock: "true"
         }
     ],
@@ -26,7 +26,7 @@ exports.config = {
         backtrace: false,
         requireModule: ['@babel/register'],
         failAmbiguousDefinitions: true,
-        failFast: false,
+        failFast: true,
         ignoreUndefinedDefinitions: true,
         name: [],
         snippets: true,
@@ -41,6 +41,6 @@ exports.config = {
         strict: true,
         tagExpression: 'not @Pending',
         tagsInTitle: false,
-        timeout: 20000
+        timeout: 200000
     },
 }

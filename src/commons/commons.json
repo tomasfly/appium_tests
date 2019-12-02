@@ -1,3 +1,20 @@
 {
-    "loginButton":"new UiSelector().resourceIdMatches(\".*:id/sign_in_button\")"
+    "loginPage": {
+        "loginButtonResourceId": "sign_in_button",
+        "signInRadioButtonResourceId": "login_accordion_header",
+        "emailInputResourceId": "ap_email_login",
+        "continueButtonResourceId": "continue",
+        "passwordInputResourceId": "ap_password",
+        "signInSubmitButtonResourceId": "signInSubmit"
+    },
+    "homePage": {
+        "searchBarClassNameString": "android.widget.EditText"
+    },
+    "credentials": {
+        "username": "tomas.fleiderman@gmail.com",
+        "password": "Asdasd123,"
+    },
+    "resultsPage": {
+        "resultItemsXpath": "//android.view.View[@resource-id='search']/android.view.View[@clickable='true']"
+    }
 }

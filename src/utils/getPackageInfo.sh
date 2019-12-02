@@ -1,3 +1,4 @@
+#Script to get APK information
 if [ -z "$1" ]
 then
       echo "Please pass APK path as the only parameter of this script"

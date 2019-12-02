@@ -1,3 +1,4 @@
+#Script to get a list of devices available.
 if [ -z "$1" ]
 then
       echo "Please pass SDK Platform Tools Absolute path as the only parameter of this script
