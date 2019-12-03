@@ -1,26 +1,45 @@
+import commons from "../commons/commons.json"
+
 export default class Page {
-    //Tap on any element of the application.
     tap(element) {
         this.beforeAnyActionChecks(element);
         element.click();
     }
-    //Input text in an element.
-    inputText(element,value){
+    inputText(element, value) {
         this.beforeAnyActionChecks(element);
         element.setValue(value);
     }
 
-    //Call this method before any action.
-    beforeAnyActionChecks(element){
-        element.waitForExist();
+    beforeAnyActionChecks(element) {
+        element.waitForExist(commons.waitForExisTimeout);
         element.waitForEnabled();
     }
 
-    getLocatorStringByResourceIdMatches(patternToMatch){
+    getLocatorStringByResourceIdMatches(patternToMatch) {
         return `android=new UiSelector().resourceIdMatches(\".*${patternToMatch}\")`;
     }
-    
-    getLocatorStringByClassName(className){
+
+    getLocatorStringByClassName(className) {
         return `android=new UiSelector().className(\"${className}\")`;
     }
+
+    waitForElement(element) {
+        element.waitForExist(commons.waitForExisTimeout);
+        element.isExisting();
+        element.isEnabled();
+    }
+
+    swipeUp(element, x, y) {
+        element.touchAction([
+            'press',
+            { action: 'moveTo', x: x, y: y },
+            'release'
+        ]);
+    }
+
+    lookForElement(elementString) {
+        let elem = $(elementString);
+        let isExisting = elem.isExisting();
+        return isExisting;
+    };
 }

@@ -8,9 +8,8 @@ class ResultsPage extends Page {
 
     selectFirstResultItem() {
         super.tap(this.resultItems);
-        //wait for these elements before scrolling in product details
-        $("//android.view.View[@resource-id='bylineInfo']").waitForExist(30000);
-        $("//android.view.View[@resource-id='heart']").waitForExist(30000);
+        $("//android.view.View[@resource-id='bylineInfo']").waitForExist(commons.waitForExisTimeout);
+        $("//android.view.View[@resource-id='heart-background']").waitForExist(commons.waitForExisTimeout);
     }
 }
 export default new ResultsPage()

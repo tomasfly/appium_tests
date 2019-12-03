@@ -12,6 +12,9 @@ Given('search for product', function () {
 });
 
 Given('I clean the cart', function () {
-    CartPage.checkCart();
+    CartPage.checkCart();    
 });
 
+Given('I test scroll in elements', function () {    
+    CartPage.testScroll();
+});

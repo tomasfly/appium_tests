@@ -16,5 +16,6 @@
     },
     "resultsPage": {
         "resultItemsXpath": "//android.view.View[@resource-id='search']/android.view.View[@clickable='true']"
-    }
+    },
+    "waitForExisTimeout":"15000"
 }

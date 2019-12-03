@@ -3,16 +3,20 @@ import Page from "./page";
 
 class CartPage extends Page {
 
+    testScroll() {
+        let elem = $(super.getLocatorStringByResourceIdMatches('mash_web_fragment'));
+        super.waitForElement(elem);        
+        super.swipeUp(elem);
+    }
+
     checkCart() {
-        //Temporary pause added. WebdriverIo waitForExist function from element doesnt seem to do the work
-        browser.pause(7000);
+        super.waitForElement($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_cart_count')));
         let productsOnCart = $(super.getLocatorStringByResourceIdMatches('chrome_action_bar_cart_count')).getText();
         if (productsOnCart !== '0') {
             for (let index = 0; index < productsOnCart; index++) {
                 this.emptyCart();
             }
         }
-        console.log('going to gome');
         super.tap($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_home_logo')));
     }
 
@@ -35,7 +39,7 @@ class CartPage extends Page {
         expect($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_cart_count')).getText()).to.be.equal(quantity);
         let subTotalString = $("//android.view.View[@resource-id='sc-proceed-to-checkout-params-form']/android.view.View[3]").getText();
         let subtotal = subTotalString.split(' ')[1].replace(',', '.');
-        expect(subtotal).to.be.equal(price);        
+        expect(subtotal).to.be.equal(price.toString());
     }
 }
 export default new CartPage()
