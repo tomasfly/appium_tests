@@ -36,6 +36,10 @@ export default class Page {
             'release'
         ]);
     }
+    
+    goToHome(){
+        tap($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_home_logo')));
+    }
 
     lookForElement(elementString) {
         let elem = $(elementString);

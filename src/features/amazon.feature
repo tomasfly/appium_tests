@@ -11,3 +11,9 @@ Feature: Login to amazon shopping
         And add 2 items
         And go to cart
         Then price and quantity are correct
+        And search for second product
+        And select first result from list
+        And add 1 items
+        Then price and quantity are correct after adding second element
+        And remove 1 item from the first item added
+        Then price is udpated correctly

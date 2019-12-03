@@ -8,7 +8,7 @@ Given('I login', function () {
 });
 
 Given('search for product', function () {
-    HomePage.searchProduct();
+    HomePage.searchProduct('hats for men');
 });
 
 Given('I clean the cart', function () {

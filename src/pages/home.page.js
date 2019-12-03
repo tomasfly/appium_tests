@@ -5,9 +5,9 @@ class HomePage extends Page {
 
     get searchBar() { return $(super.getLocatorStringByClassName(commons.homePage.searchBarClassNameString)) }
 
-    searchProduct() {
+    searchProduct(searchString) {
         super.tap(this.searchBar);
-        super.inputText(this.searchBar, 'hats for men');
+        super.inputText(this.searchBar, searchString);
         browser.pressKeyCode(66);
     }
 }

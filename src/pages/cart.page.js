@@ -40,6 +40,7 @@ class CartPage extends Page {
         let subTotalString = $("//android.view.View[@resource-id='sc-proceed-to-checkout-params-form']/android.view.View[3]").getText();
         let subtotal = subTotalString.split(' ')[1].replace(',', '.');
         expect(subtotal).to.be.equal(price.toString());
+        super.tap($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_home_logo')));
     }
 }
 export default new CartPage()

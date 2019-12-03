@@ -12,6 +12,10 @@ When('add 2 items', function () {
     ProductPage.addToCart(2);
 });
 
+When('add 1 items', function () {
+    ProductPage.addToCart(1);
+});
+
 When('go to cart', function () {
     CartPage.goToCart();
 });
