@@ -4,15 +4,16 @@ import ProductPage from '../pages/product.page.js';
 import CartPage from '../pages/cart.page';
 
 When('select first result from list', function () {
-    ResultsPage.selectFirstResultItem();
-    ProductPage.getPrice();
+    ResultsPage.selectFirstResultItem();    
 });
 
 When('add 2 items', function () {
+    ProductPage.getPrice('menHatPrice');
     ProductPage.addToCart(2);
 });
 
 When('add 1 items', function () {
+    ProductPage.getPrice('womenHatPrice');
     ProductPage.addToCart(1);
 });
 

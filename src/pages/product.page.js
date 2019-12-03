@@ -3,7 +3,7 @@ import commons from "../commons/commons.json"
 
 class ProductPage extends Page {
 
-    getPrice() {
+    getPrice(storedKeyValue) {
         super.waitForElement($(super.getLocatorStringByResourceIdMatches('dp')));
         let scrollingElement = $(super.getLocatorStringByResourceIdMatches('dp'));
         while (!super.lookForElement("//android.view.View[@resource-id='price']/android.view.View/android.view.View[2]")) {
@@ -11,7 +11,7 @@ class ProductPage extends Page {
         }
         let resultado = $("//android.view.View[@resource-id='price']/android.view.View/android.view.View[2]").getText();
         let resultadoArray = resultado.split(/(\s+)/);
-        browser.sharedStore.set('menHatPrice', resultadoArray[0].replace(',', '.'));
+        browser.sharedStore.set(storedKeyValue, resultadoArray[0].replace(',', '.'));
     }
 
     addToCart(quantity) {
@@ -25,7 +25,7 @@ class ProductPage extends Page {
         while (!super.lookForElement(super.getLocatorStringByResourceIdMatches('add-to-cart-button'))) {
             super.swipeUp(scrollingElement, 200, 300);
         }
-        super.swipeUp(scrollingElement, 200, 300);
+        super.swipeUp(scrollingElement, 200, 500);
         super.tap($(super.getLocatorStringByResourceIdMatches('add-to-cart-button')));
     }
 }

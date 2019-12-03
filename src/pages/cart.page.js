@@ -1,11 +1,12 @@
 import { expect } from 'chai';
 import Page from "./page";
+import commons from "../commons/commons.json"
 
 class CartPage extends Page {
 
     testScroll() {
         let elem = $(super.getLocatorStringByResourceIdMatches('mash_web_fragment'));
-        super.waitForElement(elem);        
+        super.waitForElement(elem);
         super.swipeUp(elem);
     }
 
@@ -37,8 +38,10 @@ class CartPage extends Page {
 
     checkPriceAndQuantity(quantity, price) {
         expect($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_cart_count')).getText()).to.be.equal(quantity);
+        $("//android.view.View[@resource-id='sc-proceed-to-checkout-params-form']/android.view.View[3]").waitForExist(Number(commons.waitForExisTimeout));
         let subTotalString = $("//android.view.View[@resource-id='sc-proceed-to-checkout-params-form']/android.view.View[3]").getText();
         let subtotal = subTotalString.split(' ')[1].replace(',', '.');
+        browser.sharedStore.set('partialSubtotal', subtotal);
         expect(subtotal).to.be.equal(price.toString());
         super.tap($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_home_logo')));
     }

@@ -7,7 +7,10 @@ Then('price and quantity are correct', function () {
 });
 
 Then('price and quantity are correct after adding second element', function () {
-    console.log('//TO BE IMPLEMENTED');
+    let menHatSubtotal = browser.sharedStore.get('menHatPrice') * 2;
+    let womenHatSubtotal = browser.sharedStore.get('womenHatPrice') * 1;
+    let subtotal = Number(menHatSubtotal) + Number(womenHatSubtotal);
+    CartPage.checkPriceAndQuantity('3', subtotal);
 });
 
 Then('remove 1 item from the first item added', function () {

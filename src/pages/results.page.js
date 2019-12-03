@@ -9,7 +9,6 @@ class ResultsPage extends Page {
     selectFirstResultItem() {
         super.tap(this.resultItems);
         $("//android.view.View[@resource-id='bylineInfo']").waitForExist(Number(commons.waitForExisTimeout));
-        $("//android.view.View[@resource-id='heart-background']").waitForExist(Number(commons.waitForExisTimeout));
     }
 }
 export default new ResultsPage()
