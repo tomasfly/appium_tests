@@ -20,7 +20,7 @@ class ProductPage extends Page {
             super.swipeUp(scrollingElement, 200, 200);
         }
         super.tap($("//android.view.View[@resource-id='mobileQuantitySelection']/android.view.View"));
-        $(`//android.view.View[@resource-id='mobileQuantityDropDown_${quantity - 1}']`).waitForExist(commons.waitForExisTimeout);
+        $(`//android.view.View[@resource-id='mobileQuantityDropDown_${quantity - 1}']`).waitForExist(Number(commons.waitForExisTimeout));
         super.tap($(`//android.view.View[@resource-id='mobileQuantityDropDown_${quantity - 1}']`));
         while (!super.lookForElement(super.getLocatorStringByResourceIdMatches('add-to-cart-button'))) {
             super.swipeUp(scrollingElement, 200, 200);

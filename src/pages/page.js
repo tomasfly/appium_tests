@@ -11,7 +11,7 @@ export default class Page {
     }
 
     beforeAnyActionChecks(element) {
-        element.waitForExist(commons.waitForExisTimeout);
+        element.waitForExist(Number(commons.waitForExisTimeout));
         element.waitForEnabled();
     }
 
@@ -24,7 +24,7 @@ export default class Page {
     }
 
     waitForElement(element) {
-        element.waitForExist(commons.waitForExisTimeout);
+        element.waitForExist(Number(commons.waitForExisTimeout));
         element.isExisting();
         element.isEnabled();
     }
