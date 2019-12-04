@@ -4,28 +4,32 @@ import commons from "../commons/commons.json"
 
 class CartPage extends Page {
 
-    testScroll() {
-        let elem = $(super.getLocatorStringByResourceIdMatches('mash_web_fragment'));
-        super.waitForElement(elem);
-        super.swipeUp(elem);
-    }
+    get chromeActionBarCartCount() { return $(super.getLocatorStringByResourceIdMatches(commons.cartPage.chromeActionBarCartCount)) }
+    get homeLogo() { return $(super.getLocatorStringByResourceIdMatches(commons.cartPage.homeLogo)) }
+    get cartImage() { return $(super.getLocatorStringByResourceIdMatches(commons.cartPage.cartImage)) }
+    get activeCartViewForm() { return $(super.getLocatorStringByResourceIdMatches(commons.cartPage.activeCartViewForm)) }
+    get scItem() { return $(super.getLocatorStringByResourceIdMatches(commons.cartPage.scItem)) }
+    get deleteButton() { return $(commons.cartPage.deleteButtonXpath) }
+    get subtotal() { return $(commons.cartPage.subtotalXpath) }
+    get webViewContainer() { return $(super.getLocatorStringByResourceIdMatches(commons.cartPage.webViewContainer)) }
+    get removeItemButton() { return $(commons.cartPage.removeItemButton) }
 
     checkCart() {
-        super.waitForElement($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_cart_count')));
-        let productsOnCart = $(super.getLocatorStringByResourceIdMatches('chrome_action_bar_cart_count')).getText();
+        super.waitForElement(this.chromeActionBarCartCount);
+        let productsOnCart = this.chromeActionBarCartCount.getText();
         if (productsOnCart !== '0') {
             for (let index = 0; index < productsOnCart; index++) {
                 this.emptyCart();
             }
         }
-        super.tap($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_home_logo')));
+        super.tap(this.homeLogo);
     }
 
     emptyCart() {
-        super.tap($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_cart_image')));
+        super.tap(this.cartImage);
         try {
-            $(this.getLocatorStringByResourceIdMatches('activeCartViewForm')).$(super.getLocatorStringByResourceIdMatches('sc-item-'));
-            super.tap($("//android.view.View[@resource-id='activeCartViewForm']//android.widget.Button"));
+            $(this.getLocatorStringByResourceIdMatches(commons.cartPage.activeCartViewForm)).$(super.getLocatorStringByResourceIdMatches(commons.cartPage.scItem));
+            super.tap(this.deleteButton);
         }
         catch{
             console.log('No items found for deletion');
@@ -33,27 +37,26 @@ class CartPage extends Page {
     }
 
     goToCart() {
-        super.tap($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_cart_image')));
+        super.tap(this.cartImage);
     }
 
     checkPriceAndQuantity(quantity, price) {
         let priceTwoDecimals = price.toFixed(2);
-        expect($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_cart_count')).getText()).to.be.equal(quantity);
-        $("//android.view.View[@resource-id='sc-proceed-to-checkout-params-form']/android.view.View[3]").waitForExist(Number(commons.waitForExisTimeout));
-        let subTotalString = $("//android.view.View[@resource-id='sc-proceed-to-checkout-params-form']/android.view.View[3]").getText();
+        expect(this.chromeActionBarCartCount.getText()).to.be.equal(quantity);
+        this.subtotal.waitForExist(Number(commons.waitForExisTimeout));
+        let subTotalString = this.subtotal.getText();
         let subtotal = subTotalString.split(' ')[1].replace(',', '.');
         browser.sharedStore.set('partialSubtotal', subtotal);
         expect(subtotal).to.be.equal(priceTwoDecimals.toString());
-        super.tap($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_home_logo')));
+        super.tap(this.homeLogo);
     }
 
     removeOneItem() {
-
-        let scrollElement = $(super.getLocatorStringByResourceIdMatches('mshop_webView_container'));
-        while (!super.lookForElement("//android.view.View[@resource-id='activeCartViewForm']/android.view.View[2]/android.view.View[2]")) {
+        let scrollElement = this.webViewContainer;
+        while (!super.lookForElement(commons.cartPage.removeItemButton)) {
             super.swipeUp(scrollElement, 200, 300);
         }
-        super.tap($("//android.view.View[@resource-id='activeCartViewForm']/android.view.View[2]/android.view.View[2]"));
+        super.tap(this.removeItemButton);
     }
 }
 export default new CartPage()

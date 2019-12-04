@@ -17,5 +17,16 @@
     "resultsPage": {
         "resultItemsXpath": "//android.view.View[@resource-id='search']/android.view.View[@clickable='true']"
     },
-    "waitForExisTimeout":"15000"
+    "waitForExisTimeout":"15000",
+    "cartPage":{
+        "chromeActionBarCartCount":"chrome_action_bar_cart_count",
+        "homeLogo":"chrome_action_bar_home_logo",
+        "cartImage":"chrome_action_bar_cart_image",
+        "activeCartViewForm":"activeCartViewForm",
+        "scItem":"sc-item-",
+        "deleteButtonXpath":"//android.view.View[@resource-id='activeCartViewForm']//android.widget.Button",
+        "subtotalXpath":"//android.view.View[@resource-id='sc-proceed-to-checkout-params-form']/android.view.View[3]",
+        "webViewContainer":"mshop_webView_container",
+        "removeItemButton":"//android.view.View[@resource-id='activeCartViewForm']/android.view.View[2]/android.view.View[2]"
+    }
 }
