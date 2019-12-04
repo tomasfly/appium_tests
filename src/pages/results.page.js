@@ -1,14 +1,14 @@
-import { expect } from 'chai';
 import Page from "./page";
 import commons from "../commons/commons.json"
 
 class ResultsPage extends Page {
 
     get resultItems() { return $(commons.resultsPage.resultItemsXpath) }
+    get byLineInfo() { return $(commons.resultsPage.byLineInfoXpath) }
 
     selectFirstResultItem() {
         super.tap(this.resultItems);
-        $("//android.view.View[@resource-id='bylineInfo']").waitForExist(Number(commons.waitForExisTimeout));
+        this.byLineInfo.waitForExist(Number(commons.waitForExisTimeout));
     }
 }
 export default new ResultsPage()

@@ -15,7 +15,8 @@
         "password": "Asdasd123,"
     },
     "resultsPage": {
-        "resultItemsXpath": "//android.view.View[@resource-id='search']/android.view.View[@clickable='true']"
+        "resultItemsXpath": "//android.view.View[@resource-id='search']/android.view.View[@clickable='true']",
+        "byLineInfoXpath":"//android.view.View[@resource-id='bylineInfo']"
     },
     "waitForExisTimeout":"15000",
     "cartPage":{
@@ -28,5 +29,12 @@
         "subtotalXpath":"//android.view.View[@resource-id='sc-proceed-to-checkout-params-form']/android.view.View[3]",
         "webViewContainer":"mshop_webView_container",
         "removeItemButton":"//android.view.View[@resource-id='activeCartViewForm']/android.view.View[2]/android.view.View[2]"
+    },
+    "productPage":{
+        "priceXpath":"//android.view.View[@resource-id='price']/android.view.View/android.view.View[2]",
+        "dpElement":"dp",
+        "quantitySelectionXpath":"//android.view.View[@resource-id='mobileQuantitySelection']/android.view.View",
+        "quantityPartialXpath":"//android.view.View[@resource-id='mobileQuantityDropDown_",
+        "addToCartButton":"add-to-cart-button"
     }
 }

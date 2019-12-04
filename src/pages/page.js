@@ -36,9 +36,9 @@ export default class Page {
             'release'
         ]);
     }
-    
-    goToHome(){
-        tap($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_home_logo')));
+
+    goToHome() {
+        tap($(super.getLocatorStringByResourceIdMatches(commons.cartPage.homeLogo)));
     }
 
     lookForElement(elementString) {
