@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@wdio/dot-reporter": "^5.16.5",
     "chai": "^4.2.0",
     "chai-webdriverio": "^1.0.0",
     "webdriverio": "^5.16.10"
