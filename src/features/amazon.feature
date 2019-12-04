@@ -16,5 +16,7 @@ Feature: Login to amazon shopping
         And add 1 items
         And go to cart
         Then price and quantity are correct after adding second element
+        And go to cart
         And remove 1 item from the first item added
+        And go to cart        
         Then price is udpated correctly

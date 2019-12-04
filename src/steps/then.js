@@ -14,11 +14,14 @@ Then('price and quantity are correct after adding second element', function () {
 });
 
 Then('remove 1 item from the first item added', function () {
-    console.log('//TO BE IMPLEMENTED');
+    CartPage.removeOneItem();
 });
 
 Then('price is udpated correctly', function () {
-    console.log('//TO BE IMPLEMENTED');
+    let menHatSubtotal = browser.sharedStore.get('menHatPrice') * 1;
+    let womenHatSubtotal = browser.sharedStore.get('womenHatPrice') * 1;
+    let subtotal = Number(menHatSubtotal) + Number(womenHatSubtotal);
+    CartPage.checkPriceAndQuantity('2', subtotal);
 });
 
 Then('search for second product', function () {

@@ -42,5 +42,6 @@ exports.config = {
         tagExpression: 'not @Pending',
         tagsInTitle: false,
         timeout: 200000
-    }    
+    },
+    reporters: ['dot', 'spec']    
 }

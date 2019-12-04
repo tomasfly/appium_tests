@@ -37,13 +37,23 @@ class CartPage extends Page {
     }
 
     checkPriceAndQuantity(quantity, price) {
+        let priceTwoDecimals = price.toFixed(2);
         expect($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_cart_count')).getText()).to.be.equal(quantity);
         $("//android.view.View[@resource-id='sc-proceed-to-checkout-params-form']/android.view.View[3]").waitForExist(Number(commons.waitForExisTimeout));
         let subTotalString = $("//android.view.View[@resource-id='sc-proceed-to-checkout-params-form']/android.view.View[3]").getText();
         let subtotal = subTotalString.split(' ')[1].replace(',', '.');
         browser.sharedStore.set('partialSubtotal', subtotal);
-        expect(subtotal).to.be.equal(price.toString());
+        expect(subtotal).to.be.equal(priceTwoDecimals.toString());
         super.tap($(super.getLocatorStringByResourceIdMatches('chrome_action_bar_home_logo')));
+    }
+
+    removeOneItem() {
+
+        let scrollElement = $(super.getLocatorStringByResourceIdMatches('mshop_webView_container'));
+        while (!super.lookForElement("//android.view.View[@resource-id='activeCartViewForm']/android.view.View[2]/android.view.View[2]")) {
+            super.swipeUp(scrollElement, 200, 300);
+        }
+        super.tap($("//android.view.View[@resource-id='activeCartViewForm']/android.view.View[2]/android.view.View[2]"));
     }
 }
 export default new CartPage()
