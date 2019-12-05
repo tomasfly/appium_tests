@@ -54,7 +54,7 @@ class CartPage extends Page {
     removeOneItem() {
         let scrollElement = this.webViewContainer;
         while (!super.lookForElement(commons.cartPage.removeItemButton)) {
-            super.swipeUp(scrollElement, 200, 300);
+            super.swipeUpScreen();
         }
         super.tap(this.removeItemButton);
     }

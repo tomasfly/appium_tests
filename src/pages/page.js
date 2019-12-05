@@ -37,6 +37,14 @@ export default class Page {
         ]);
     }
 
+    swipeUpScreen(){
+        browser.touchAction([
+            { action: 'press', x: 500, y: 1200 },
+            { action: 'moveTo', x: 500, y: 600 },
+            'release'
+        ]);
+    }
+
     goToHome() {
         tap($(super.getLocatorStringByResourceIdMatches(commons.cartPage.homeLogo)));
     }
