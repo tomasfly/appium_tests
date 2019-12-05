@@ -5,15 +5,15 @@ Feature: Login to amazon shopping
     Background:
         Given I clean the cart
 
-    Scenario: Scenario Outline name: Add products to the cart
-        Given search for product
+    Scenario: Add products to the cart
+        Given search for product "hats for men"
         When select first result from list
-        And add 2 items
+        And add 2 items and store value in memory with key "menHatPrice"        
         And go to cart
         Then price and quantity are correct
-        And search for second product
+        And search for product "hats for women"
         And select first result from list
-        And add 1 items
+        And add 1 items and store value in memory with key "womenHatPrice"
         And go to cart
         Then price and quantity are correct after adding second element
         And go to cart

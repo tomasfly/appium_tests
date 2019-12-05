@@ -23,7 +23,3 @@ Then('price is udpated correctly', function () {
     let subtotal = Number(menHatSubtotal) + Number(womenHatSubtotal);
     CartPage.checkPriceAndQuantity('2', subtotal);
 });
-
-Then('search for second product', function () {
-    HomePage.searchProduct('hats for women');
-});

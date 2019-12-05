@@ -7,8 +7,8 @@ Given('I login', function () {
     LoginPage.login();
 });
 
-Given('search for product', function () {
-    HomePage.searchProduct('hats for men');
+Given('search for product {string}', function (searchString) {
+    HomePage.searchProduct(searchString);
 });
 
 Given('I clean the cart', function () {

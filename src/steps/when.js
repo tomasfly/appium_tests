@@ -7,14 +7,10 @@ When('select first result from list', function () {
     ResultsPage.selectFirstResultItem();    
 });
 
-When('add 2 items', function () {
-    ProductPage.getPrice('menHatPrice');
-    ProductPage.addToCart(2);
-});
-
-When('add 1 items', function () {
-    ProductPage.getPrice('womenHatPrice');
-    ProductPage.addToCart(1);
+When('add {int} items and store value in memory with key {string}', function (itemsNumber,keyToStore) {
+    console.log('PARAMETERS FOR STEP'+itemsNumber + keyToStore)
+    ProductPage.getPrice(keyToStore);
+    ProductPage.addToCart(itemsNumber);
 });
 
 When('go to cart', function () {
