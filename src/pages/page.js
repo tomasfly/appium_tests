@@ -53,5 +53,11 @@ export default class Page {
         let elem = $(elementString);
         let isExisting = elem.isExisting();
         return isExisting;
-    };
+    }
+
+    swipeUntilElementDisplayed(selectorString){
+        while (!this.lookForElement(selectorString)) {
+            this.swipeUpScreen();
+        }
+    }
 }

@@ -52,10 +52,7 @@ class CartPage extends Page {
     }
 
     removeOneItem() {
-        let scrollElement = this.webViewContainer;
-        while (!super.lookForElement(commons.cartPage.removeItemButton)) {
-            super.swipeUpScreen();
-        }
+        super.swipeUntilElementDisplayed(commons.cartPage.removeItemButton);
         super.tap(this.removeItemButton);
     }
 }

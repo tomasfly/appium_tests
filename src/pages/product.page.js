@@ -12,25 +12,18 @@ class ProductPage extends Page {
     getPrice(storedKeyValue) {
         super.waitForElement(this.dpElement);
         let scrollingElement = this.dpElement;
-        while (!super.lookForElement(commons.productPage.priceXpath)) {
-            super.swipeUpScreen();
-        }
+        super.swipeUntilElementDisplayed(commons.productPage.priceXpath);
         let resultado = this.price.getText();
         let resultadoArray = resultado.split(/(\s+)/);
         browser.sharedStore.set(storedKeyValue, resultadoArray[0].replace(',', '.'));
     }
 
     addToCart(quantity) {
-        let scrollingElement = $(super.getLocatorStringByResourceIdMatches('dp'));
-        while (!super.lookForElement(commons.productPage.quantitySelectionXpath)) {
-            super.swipeUpScreen();
-        }
+        super.swipeUntilElementDisplayed(commons.productPage.quantitySelectionXpath);
         super.tap(this.mobileQuantitySelection);
         $(`${commons.productPage.quantityPartialXpath}${quantity - 1}']`).waitForExist(Number(commons.waitForExisTimeout));
         super.tap($(`${commons.productPage.quantityPartialXpath}${quantity - 1}']`));
-        while (!super.lookForElement(super.getLocatorStringByResourceIdMatches(commons.productPage.addToCartButton))) {
-            super.swipeUpScreen();
-        }
+        super.swipeUntilElementDisplayed(super.getLocatorStringByResourceIdMatches(commons.productPage.addToCartButton));
         super.swipeUpScreen();
         super.tap(this.addToCartButton);
     }
